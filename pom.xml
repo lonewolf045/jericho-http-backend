@@ -15,7 +15,9 @@
 	<description>API made by Spring boot</description>
 	<properties>
 		<java.version>1.8</java.version>
+		<start-class>com.techm.crypton.jericho.JerichoApplication</start-class>
 	</properties>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -81,12 +83,23 @@
 	</dependencies>
 
 	<build>
-		<plugins>
-	<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
+<plugins>
+   <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+            <fork>true</fork>
+            <mainClass>${start-class}</mainClass>
+        </configuration>
+          <executions>
+            <execution>
+              <goals>
+                <goal>repackage</goal>
+              </goals>
+            </execution>
+        </executions>
+    </plugin>
+</plugins>
 	</build>
 	<packaging>jar</packaging>
 
